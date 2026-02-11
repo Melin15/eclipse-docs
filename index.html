@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eclipse Cheats — FAQ & Помощь</title>
+    <link rel="icon" href="logo.png" type="image/png">
+
+    <!-- Open Graph / Telegram Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Eclipse Cheats — Documentation">
+    <meta property="og:description" content="Полное руководство по установке, запуску и устранению ошибок. Complete installation, launch & troubleshooting guide.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:site_name" content="Eclipse Cheats">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Eclipse Cheats — Documentation">
+    <meta name="twitter:description" content="FAQ & Помощь | Installation Guide & Troubleshooting">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0f;
+            --bg-main: #0e0e16;
+            --bg-sidebar: #0b0b12;
+            --bg-card: #13131e;
+            --bg-card-hover: #181828;
+            --bg-elevated: #1a1a2e;
+            --bg-input: #111119;
+            --border: #1e1e30;
+            --border-light: #2a2a42;
+            --text-white: #ffffff;
+            --text-primary: #e4e4ed;
+            --text-secondary: #8b8ba3;
+            --text-muted: #5c5c78;
+            --orange: #f7931a;
+            --orange-light: #ffaa3b;
+            --orange-dark: #e07d0a;
+            --orange-glow: rgba(247, 147, 26, 0.12);
+            --orange-glow-strong: rgba(247, 147, 26, 0.25);
+            --green: #22c55e;
+            --green-glow: rgba(34, 197, 94, 0.1);
+            --red: #ef4444;
+            --red-glow: rgba(239, 68, 68, 0.08);
+            --blue: #3b82f6;
+            --blue-glow: rgba(59, 130, 246, 0.08);
+            --yellow: #eab308;
+            --yellow-glow: rgba(234, 179, 8, 0.08);
+            --gradient-orange: linear-gradient(135deg, #f7931a, #ffaa3b);
+            --gradient-bg: linear-gradient(180deg, #0e0e16 0%, #0a0a0f 100%);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
+            --shadow-glow: 0 0 30px rgba(247, 147, 26, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--orange); }
+
+        /* ========= LAYOUT ========= */
+        .layout { display: flex; min-height: 100vh; }
+
+        /* ========= SIDEBAR ========= */
+        .sidebar {
+            width: 280px;
+            background: var(--bg-sidebar);
+            border-right: 1px solid var(--border);
+            position: fixed;
+            top: 0; left: 0;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .sidebar-logo {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(247, 147, 26, 0.3));
+        }
+
+        .sidebar-brand {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-brand-name {
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--text-white);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .sidebar-brand-name span {
+            color: var(--orange);
+        }
+
+        .sidebar-brand-sub {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            display: flex;
+            background: var(--bg-dark);
+            border-radius: var(--radius-sm);
+            padding: 3px;
+            margin: 16px 16px 4px;
+            border: 1px solid var(--border);
+        }
+
+        .lang-btn {
+            flex: 1;
+            padding: 7px 12px;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.25s;
+            font-family: inherit;
+            letter-spacing: 0.3px;
+        }
+
+        .lang-btn:hover { color: var(--text-secondary); }
+
+        .lang-btn.active {
+            background: var(--gradient-orange);
+            color: var(--bg-dark);
+            box-shadow: 0 2px 12px rgba(247, 147, 26, 0.35);
+        }
+
+        /* Sidebar Nav */
+        .sidebar-nav { padding: 12px 10px 24px; }
+
+        .nav-section { margin-bottom: 6px; }
+
+        .nav-section-title {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            padding: 14px 10px 6px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 9px 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: var(--radius-sm);
+            transition: all 0.2s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            background: rgba(247, 147, 26, 0.05);
+            color: var(--text-primary);
+        }
+
+        .nav-link.active {
+            background: var(--orange-glow);
+            color: var(--orange);
+        }
+
+        .nav-link.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 18px;
+            background: var(--orange);
+            border-radius: 0 3px 3px 0;
+        }
+
+        .nav-icon { font-size: 15px; width: 20px; text-align: center; flex-shrink: 0; }
+
+        /* Status indicator in sidebar */
+        .sidebar-status {
+            margin: 12px 16px;
+            padding: 10px 14px;
+            background: var(--green-glow);
+            border: 1px solid rgba(34, 197, 94, 0.15);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--green);
+            font-weight: 500;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+            50% { opacity: 0.8; box-shadow: 0 0 0 4px rgba(34, 197, 94, 0); }
+        }
+
+        /* ========= MAIN ========= */
+        .main {
+            margin-left: 280px;
+            flex: 1;
+            min-width: 0;
+            background: var(--gradient-bg);
+        }
+
+        /* Top Bar */
+        .topbar {
+            position: sticky;
+            top: 0;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 10px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 50;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        .breadcrumb a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb a:hover { color: var(--orange); }
+
+        .breadcrumb .sep { color: var(--border-light); }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 8px 14px;
+            width: 280px;
+            transition: all 0.25s;
+        }
+
+        .search-box:focus-within {
+            border-color: var(--orange);
+            box-shadow: 0 0 0 3px rgba(247, 147, 26, 0.1);
+        }
+
+        .search-box input {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 13px;
+            width: 100%;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .search-box input::placeholder { color: var(--text-muted); }
+        .search-icon { color: var(--text-muted); font-size: 14px; }
+
+        /* ========= CONTENT ========= */
+        .content {
+            max-width: 840px;
+            margin: 0 auto;
+            padding: 40px 36px 80px;
+        }
+
+        .page-header { margin-bottom: 32px; }
+
+        .page-header h1 {
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 10px;
+            color: var(--text-white);
+        }
+
+        .page-header h1 .accent { color: var(--orange); }
+
+        .page-header .subtitle {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .section { display: none; }
+        .section.active { display: block; }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 36px 0 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-white);
+            letter-spacing: -0.2px;
+        }
+
+        h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin: 24px 0 10px;
+            color: var(--text-primary);
+        }
+
+        p {
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        a { color: var(--orange-light); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--orange); text-decoration: underline; }
+
+        /* ========= ALERTS ========= */
+        .alert {
+            padding: 16px 20px;
+            border-radius: var(--radius-md);
+            margin: 20px 0;
+            font-size: 13.5px;
+            line-height: 1.6;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .alert-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+        .alert-warning {
+            background: var(--yellow-glow);
+            border: 1px solid rgba(234, 179, 8, 0.15);
+            color: var(--yellow);
+        }
+
+        .alert-danger {
+            background: var(--red-glow);
+            border: 1px solid rgba(239, 68, 68, 0.15);
+            color: var(--red);
+        }
+
+        .alert-info {
+            background: var(--blue-glow);
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            color: var(--blue);
+        }
+
+        .alert-success {
+            background: var(--green-glow);
+            border: 1px solid rgba(34, 197, 94, 0.15);
+            color: var(--green);
+        }
+
+        .alert-orange {
+            background: var(--orange-glow);
+            border: 1px solid rgba(247, 147, 26, 0.15);
+            color: var(--orange-light);
+        }
+
+        .alert strong { color: inherit; }
+
+        /* ========= STEPS ========= */
+        .steps {
+            counter-reset: step;
+            margin: 20px 0;
+        }
+
+        .step {
+            counter-increment: step;
+            position: relative;
+            padding: 18px 22px 18px 64px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            transition: all 0.2s;
+        }
+
+        .step:hover {
+            border-color: rgba(247, 147, 26, 0.25);
+            background: var(--bg-card-hover);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .step::before {
+            content: counter(step);
+            position: absolute;
+            left: 18px;
+            top: 17px;
+            width: 30px;
+            height: 30px;
+            background: var(--gradient-orange);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 13px;
+            color: var(--bg-dark);
+        }
+
+        .step strong { color: var(--text-white); }
+        .step a { color: var(--orange-light); }
+
+        /* ========= ERROR CARDS ========= */
+        .error-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            margin-bottom: 10px;
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        .error-card:hover {
+            border-color: rgba(247, 147, 26, 0.2);
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .error-card.open {
+            border-color: rgba(247, 147, 26, 0.3);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .error-header {
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.15s;
+        }
+
+        .error-header:hover { background: rgba(247, 147, 26, 0.03); }
+
+        .error-number {
+            background: var(--gradient-orange);
+            color: var(--bg-dark);
+            font-size: 11px;
+            font-weight: 800;
+            padding: 3px 9px;
+            border-radius: 6px;
+            flex-shrink: 0;
+            min-width: 34px;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
+
+        .error-title {
+            font-size: 13.5px;
+            font-weight: 500;
+            color: var(--text-primary);
+            flex: 1;
+        }
+
+        .error-arrow {
+            color: var(--text-muted);
+            font-size: 11px;
+            transition: transform 0.25s;
+            flex-shrink: 0;
+        }
+
+        .error-card.open .error-arrow { transform: rotate(90deg); color: var(--orange); }
+
+        .error-body {
+            display: none;
+            padding: 0 18px 18px;
+            border-top: 1px solid var(--border);
+        }
+
+        .error-card.open .error-body { display: block; }
+
+        .error-body p { margin-top: 14px; }
+
+        .solution-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--green);
+            margin-top: 14px;
+            margin-bottom: 8px;
+            padding: 4px 10px;
+            background: var(--green-glow);
+            border-radius: 6px;
+            border: 1px solid rgba(34, 197, 94, 0.12);
+        }
+
+        .solution-list { list-style: none; padding: 0; }
+
+        .solution-list li {
+            position: relative;
+            padding: 5px 0 5px 22px;
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            line-height: 1.65;
+        }
+
+        .solution-list li::before {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 13px;
+            width: 6px;
+            height: 6px;
+            background: var(--orange);
+            border-radius: 50%;
+        }
+
+        .solution-list li strong { color: var(--text-white); }
+        .solution-list li a { color: var(--orange-light); }
+
+        .screenshot-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            padding: 4px 10px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+
+        .screenshot-link:hover {
+            border-color: var(--orange);
+            color: var(--orange-light);
+            text-decoration: none;
+        }
+
+        /* Code block */
+        .code-block {
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 12px 16px;
+            font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+            font-size: 13px;
+            color: var(--orange-light);
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+
+        /* Kbd */
+        kbd {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-light);
+            border-bottom: 2px solid var(--border-light);
+            border-radius: 5px;
+            padding: 1px 7px;
+            font-size: 12px;
+            font-family: inherit;
+            color: var(--text-white);
+        }
+
+        /* ========= WELCOME FEATURES ========= */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin: 24px 0;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 22px 18px;
+            text-align: center;
+            transition: all 0.25s;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(247, 147, 26, 0.3);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .feature-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .feature-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-white);
+            margin-bottom: 4px;
+        }
+
+        .feature-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ========= MOBILE ========= */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-orange);
+            border: none;
+            border-radius: 14px;
+            color: var(--bg-dark);
+            font-size: 22px;
+            font-weight: 700;
+            cursor: pointer;
+            z-index: 200;
+            box-shadow: 0 4px 20px rgba(247, 147, 26, 0.4);
+        }
+
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 99;
+            backdrop-filter: blur(4px);
+        }
+
+        @media (max-width: 900px) {
+            .features-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .sidebar { transform: translateX(-100%); }
+            .sidebar.open { transform: translateX(0); }
+            .sidebar-overlay.open { display: block; }
+            .main { margin-left: 0; }
+            .mobile-toggle { display: flex; align-items: center; justify-content: center; }
+            .content { padding: 24px 18px 60px; }
+            .topbar { padding: 10px 18px; }
+            .search-box { width: 180px; }
+            .page-header h1 { font-size: 22px; }
+            .features-grid { grid-template-columns: 1fr; }
+        }
+
+        .error-card.search-hidden { display: none; }
+
+        /* Divider */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+            margin: 32px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="logo.png" alt="Eclipse" class="sidebar-logo">
+                <div class="sidebar-brand">
+                    <a href="https://eclipse-cheats.ru" target="_blank" class="sidebar-brand-name">ECLIPSE</a>
+                    <span class="sidebar-brand-sub">FAQ & Помощь</span>
+                </div>
+            </div>
+
+            <div class="lang-toggle">
+                <button class="lang-btn active" onclick="setLang('ru')">RU</button>
+                <button class="lang-btn" onclick="setLang('en')">EN</button>
+            </div>
+
+            <div class="sidebar-status">
+                <span class="status-dot"></span>
+                <span data-ru="Все системы работают" data-en="All systems operational">Все системы работают</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title" data-ru="Начало работы" data-en="Getting Started">Начало работы</div>
+                    <a class="nav-link active" onclick="showPage('welcome')" data-page="welcome">
+                        <span class="nav-icon">📖</span>
+                        <span data-ru="Введение" data-en="Introduction">Введение</span>
+                    </a>
+                    <a class="nav-link" onclick="showPage('preparation')" data-page="preparation">
+                        <span class="nav-icon">⚙️</span>
+                        <span data-ru="Подготовка ПК" data-en="PC Preparation">Подготовка ПК</span>
+                    </a>
+                    <a class="nav-link" onclick="showPage('launch')" data-page="launch">
+                        <span class="nav-icon">🚀</span>
+                        <span data-ru="Запуск чита" data-en="Launch Guide">Запуск чита</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title" data-ru="Устранение ошибок" data-en="Troubleshooting">Устранение ошибок</div>
+                    <a class="nav-link" onclick="showPage('errors-visual')" data-page="errors-visual">
+                        <span class="nav-icon">🎨</span>
+                        <span data-ru="Визуальные проблемы" data-en="Visual Issues">Визуальные проблемы</span>
+                    </a>
+                    <a class="nav-link" onclick="showPage('errors-connection')" data-page="errors-connection">
+                        <span class="nav-icon">🌐</span>
+                        <span data-ru="Проблемы соединения" data-en="Connection Issues">Проблемы соединения</span>
+                    </a>
+                    <a class="nav-link" onclick="showPage('errors-driver')" data-page="errors-driver">
+                        <span class="nav-icon">🔧</span>
+                        <span data-ru="Ошибки драйвера" data-en="Driver Errors">Ошибки драйвера</span>
+                    </a>
+                    <a class="nav-link" onclick="showPage('errors-injection')" data-page="errors-injection">
+                        <span class="nav-icon">💉</span>
+                        <span data-ru="Ошибки инжекта" data-en="Injection Errors">Ошибки инжекта</span>
+                    </a>
+                    <a class="nav-link" onclick="showPage('errors-system')" data-page="errors-system">
+                        <span class="nav-icon">💻</span>
+                        <span data-ru="Системные ошибки" data-en="System Errors">Системные ошибки</span>
+                    </a>
+                    <a class="nav-link" onclick="showPage('errors-loader')" data-page="errors-loader">
+                        <span class="nav-icon">📦</span>
+                        <span data-ru="Ошибки лоадера" data-en="Loader Errors">Ошибки лоадера</span>
+                    </a>
+                    <a class="nav-link" onclick="showPage('errors-other')" data-page="errors-other">
+                        <span class="nav-icon">❓</span>
+                        <span data-ru="Прочие ошибки" data-en="Other Errors">Прочие ошибки</span>
+                    </a>
+                </div>
+
+                <div class="nav-section">
+                    <div class="nav-section-title" data-ru="Помощь" data-en="Help">Помощь</div>
+                    <a class="nav-link" onclick="showPage('support')" data-page="support">
+                        <span class="nav-icon">💬</span>
+                        <span data-ru="Поддержка 24/7" data-en="Support 24/7">Поддержка 24/7</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+        <!-- Main -->
+        <main class="main">
+            <div class="topbar">
+                <div class="breadcrumb">
+                    <a href="https://eclipse-cheats.ru" target="_blank">Eclipse</a>
+                    <span class="sep">›</span>
+                    <span data-ru="FAQ & Помощь" data-en="FAQ & Help">FAQ & Помощь</span>
+                    <span class="sep">›</span>
+                    <span id="breadcrumb-current" data-ru="Введение" data-en="Introduction">Введение</span>
+                </div>
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchInput" data-placeholder-ru="Поиск по ошибкам..." data-placeholder-en="Search errors..." placeholder="Поиск по ошибкам..." oninput="handleSearch(this.value)">
+                </div>
+            </div>
+
+            <div class="content">
+
+                <!-- ===================== WELCOME ===================== -->
+                <div class="section active" id="page-welcome">
+                    <div class="page-header">
+                        <h1 data-ru="Документация <span class='accent'>Eclipse</span>" data-en="<span class='accent'>Eclipse</span> Documentation"></h1>
+                        <p class="subtitle" data-ru="Полное руководство по установке, запуску и устранению ошибок наших продуктов." data-en="Complete guide for installation, launch and troubleshooting of our products."></p>
+                    </div>
+
+                    <div class="alert alert-orange">
+                        <span class="alert-icon">⚡</span>
+                        <div data-ru="Впервые используете наш продукт? Начните с раздела <strong>Подготовка ПК</strong>, затем перейдите к <strong>Запуску чита</strong>." data-en="First time using our product? Start with <strong>PC Preparation</strong>, then proceed to <strong>Launch Guide</strong>."></div>
+                    </div>
+
+                    <div class="features-grid">
+                        <div class="feature-card" onclick="showPage('preparation')">
+                            <div class="feature-icon">⚙️</div>
+                            <div class="feature-title" data-ru="Подготовка ПК" data-en="PC Preparation"></div>
+                            <div class="feature-desc" data-ru="Настройка системы перед запуском" data-en="System setup before launch"></div>
+                        </div>
+                        <div class="feature-card" onclick="showPage('launch')">
+                            <div class="feature-icon">🚀</div>
+                            <div class="feature-title" data-ru="Запуск чита" data-en="Launch Guide"></div>
+                            <div class="feature-desc" data-ru="Пошаговая инструкция" data-en="Step-by-step instructions"></div>
+                        </div>
+                        <div class="feature-card" onclick="showPage('errors-system')">
+                            <div class="feature-icon">🛠️</div>
+                            <div class="feature-title" data-ru="Решение ошибок" data-en="Troubleshooting"></div>
+                            <div class="feature-desc" data-ru="40+ ошибок и их решения" data-en="40+ errors and solutions"></div>
+                        </div>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <h2 data-ru="Быстрый старт" data-en="Quick Start"></h2>
+
+                    <div class="steps">
+                        <div class="step" data-ru="<strong>Подготовьте ПК</strong> — отключите защитные службы Windows, антивирусы и сторонние анти-чит системы." data-en="<strong>Prepare your PC</strong> — disable Windows security services, antivirus and third-party anti-cheat systems."></div>
+                        <div class="step" data-ru="<strong>Скачайте лоадер</strong> — используйте свой ключ для скачивания с нашего сайта." data-en="<strong>Download the loader</strong> — use your key to download from our website."></div>
+                        <div class="step" data-ru="<strong>Запустите и играйте</strong> — следуйте пошаговой инструкции из раздела «Запуск чита»." data-en="<strong>Launch and play</strong> — follow the step-by-step guide in the 'Launch Guide' section."></div>
+                    </div>
+
+                    <div class="alert alert-warning">
+                        <span class="alert-icon">⚠️</span>
+                        <div data-ru="Если вашей ошибки нет в данном мануале, обратитесь в <a href='https://t.me/EclipseHacks_bot' target='_blank'>техническую поддержку</a>." data-en="If your error is not in this manual, contact <a href='https://t.me/EclipseHacks_bot' target='_blank'>technical support</a>."></div>
+                    </div>
+                </div>
+
+                <!-- ===================== PREPARATION ===================== -->
+                <div class="section" id="page-preparation">
+                    <div class="page-header">
+                        <h1 data-ru="Подготовка <span class='accent'>компьютера</span>" data-en="<span class='accent'>PC</span> Preparation"></h1>
+                        <p class="subtitle" data-ru="Перед использованием чита необходимо подготовить Ваш компьютер." data-en="Before using the cheat, you need to prepare your computer."></p>
+                    </div>
+
+                    <div class="alert alert-danger">
+                        <span class="alert-icon">🔴</span>
+                        <div data-ru="<strong>ОБЯЗАТЕЛЬНО</strong> выполните все пункты ниже перед первым запуском!" data-en="<strong>MANDATORY</strong> — complete all steps below before the first launch!"></div>
+                    </div>
+
+                    <h2 data-ru="Отключение защитных служб" data-en="Disabling Security Services"></h2>
+
+                    <div class="steps">
+                        <div class="step" data-ru="<strong>Отключите Защитник Windows</strong> — скачайте <a href='https://www.softportal.com/software-43861-defender-control.html' target='_blank'>Defender Control</a>, запустите от имени администратора и нажмите кнопку отключения. Кнопка должна стать <strong>красной</strong>." data-en="<strong>Disable Windows Defender</strong> — download <a href='https://www.softportal.com/software-43861-defender-control.html' target='_blank'>Defender Control</a>, run as administrator and click disable. The button should turn <strong>red</strong>."></div>
+                        <div class="step" data-ru="<strong>Удалите антивирусы</strong> — Kaspersky, Avast, Avira, ESET и подобные. Используйте официальные утилиты удаления от производителя." data-en="<strong>Uninstall antivirus software</strong> — Kaspersky, Avast, Avira, ESET, etc. Use official uninstall utilities from the vendor."></div>
+                        <div class="step" data-ru="<strong>Удалите анти-читы</strong> — Faceit, Riot Vanguard и аналогичные. Используйте <a href='https://www.softportal.com/software-6084-revo-uninstaller.html' target='_blank'>Revo Uninstaller</a> для полного удаления." data-en="<strong>Uninstall anti-cheats</strong> — Faceit, Riot Vanguard and similar. Use <a href='https://www.softportal.com/software-6084-revo-uninstaller.html' target='_blank'>Revo Uninstaller</a> for complete removal."></div>
+                        <div class="step" data-ru="<strong>Очистите папку Temp</strong> — <a href='https://altarena.ru/kak-ochistit-papku-temp-v-windows-10-avtomaticheski/' target='_blank'>Инструкция по очистке</a>." data-en="<strong>Clear the Temp folder</strong> — <a href='https://altarena.ru/kak-ochistit-papku-temp-v-windows-10-avtomaticheski/' target='_blank'>Cleanup guide</a>."></div>
+                        <div class="step" data-ru="<strong>Перезагрузите компьютер</strong> после выполнения всех действий." data-en="<strong>Restart your computer</strong> after completing all actions."></div>
+                    </div>
+
+                    <div class="alert alert-orange">
+                        <span class="alert-icon">💡</span>
+                        <div data-ru="Для чита на <strong>Rust</strong>: запуск лоадера и инжект производите с <strong>USB флеш-накопителя</strong>. После инжекта обязательно извлеките USB и удалите лоадер с ПК." data-en="For <strong>Rust</strong> cheat: run the loader and inject from a <strong>USB flash drive</strong>. After injection, remove the USB and delete the loader from your PC."></div>
+                    </div>
+                </div>
+
+                <!-- ===================== LAUNCH ===================== -->
+                <div class="section" id="page-launch">
+                    <div class="page-header">
+                        <h1 data-ru="Запуск <span class='accent'>чита</span>" data-en="<span class='accent'>Launch</span> Guide"></h1>
+                        <p class="subtitle" data-ru="Пошаговая инструкция по запуску." data-en="Step-by-step launch instructions."></p>
+                    </div>
+
+                    <div class="alert alert-warning">
+                        <span class="alert-icon">⚠️</span>
+                        <div data-ru="Убедитесь, что Вы выполнили все пункты из раздела <strong>Подготовка ПК</strong>." data-en="Make sure you completed all steps from <strong>PC Preparation</strong>."></div>
+                    </div>
+
+                    <h2 data-ru="Инструкция по запуску" data-en="Launch Instructions"></h2>
+
+                    <div class="steps">
+                        <div class="step" data-ru="Запустите игру, в настройках установите режим окна <strong>«Полноэкранный в окне»</strong>, затем <strong>закройте</strong> игру." data-en="Launch the game, set window mode to <strong>'Fullscreen Windowed'</strong> in settings, then <strong>close</strong> the game."></div>
+                        <div class="step" data-ru="Скачайте лоадер: <a href='https://eclipse.orion-security.su/launcher' target='_blank'>eclipse.orion-security.su/launcher</a>, используя свой ключ." data-en="Download the loader: <a href='https://eclipse.orion-security.su/launcher' target='_blank'>eclipse.orion-security.su/launcher</a>, using your key."></div>
+                        <div class="step" data-ru="Запустите файл <strong>от имени администратора</strong>. Выберите игру из списка и нажмите <strong>«Запустить»</strong>." data-en="Run the file <strong>as administrator</strong>. Select your game and click <strong>'Run'</strong>."></div>
+                        <div class="step" data-ru="Дождитесь закрытия лоадера. При успешном инжекте — сообщение с <strong>✅ галочкой</strong>. Появится окно перезагрузки — нажмите <strong>«Да»</strong>." data-en="Wait for the loader to close. On success — a <strong>✅ checkmark</strong> message. A reboot prompt appears — click <strong>'Yes'</strong>."></div>
+                        <div class="step" data-ru="После перезагрузки: снова запустите лоадер от имени администратора → выберите игру → <strong>«Запустить»</strong>." data-en="After restart: launch the loader again as admin → select game → <strong>'Run'</strong>."></div>
+                        <div class="step" data-ru="<strong>СРАЗУ</strong> запустите игру. Дождитесь полной загрузки до главного меню." data-en="<strong>IMMEDIATELY</strong> launch the game. Wait for full load to main menu."></div>
+                        <div class="step" data-ru="Нажмите <kbd>Del</kbd> или <kbd>Home</kbd> для вызова меню чита." data-en="Press <kbd>Del</kbd> or <kbd>Home</kbd> to open the cheat menu."></div>
+                    </div>
+
+                    <div class="alert alert-danger">
+                        <span class="alert-icon">🔴</span>
+                        <div data-ru="<strong>Rust:</strong> после инжекта извлеките USB и удалите лоадер с ПК. Лоадер должен быть ТОЛЬКО на USB!" data-en="<strong>Rust:</strong> after injection, remove USB and delete loader from PC. Loader should ONLY be on USB!"></div>
+                    </div>
+
+                    <div class="alert alert-success">
+                        <span class="alert-icon">✅</span>
+                        <div data-ru="Меню чита появится в левом верхнем углу. Если возникли проблемы — смотрите раздел <strong>Устранение ошибок</strong>." data-en="Cheat menu will appear in the upper left corner. If issues occur — see <strong>Troubleshooting</strong>."></div>
+                    </div>
+                </div>
+
+                <!-- ===================== ERRORS: VISUAL ===================== -->
+                <div class="section" id="page-errors-visual">
+                    <div class="page-header">
+                        <h1 data-ru="Визуальные <span class='accent'>проблемы</span>" data-en="Visual <span class='accent'>Issues</span>"></h1>
+                        <p class="subtitle" data-ru="Проблемы с ESP, меню и визуальными элементами." data-en="Issues with ESP, menu and visual elements."></p>
+                    </div>
+
+                    <div class="error-card" data-error="1">
+                        <div class="error-header" onclick="toggleError(this)"><span class="error-number">#1</span><span class="error-title" data-ru="ESP отображает врагов некорректно, бокс смещён" data-en="ESP displays enemies incorrectly, box is offset"></span><span class="error-arrow">▶</span></div>
+                        <div class="error-body">
+                            <a class="screenshot-link" href="https://i.imgur.com/E2dZFQV.png" target="_blank">📷 <span data-ru="Скриншот" data-en="Screenshot"></span></a>
+                            <div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div>
+                            <ul class="solution-list">
+                                <li data-ru="Закройте игру." data-en="Close the game."></li>
+                                <li data-ru="Перейдите в <strong>Параметры → Дисплей → Масштаб</strong> и установите <strong>100%</strong>. <a href='https://club.dns-shop.ru/blog/t-328-prilojeniya/45790-kak-nastroit-masshtabirovanie-v-windows/' target='_blank'>Инструкция</a>." data-en="Go to <strong>Settings → Display → Scale</strong> and set <strong>100%</strong>. <a href='https://club.dns-shop.ru/blog/t-328-prilojeniya/45790-kak-nastroit-masshtabirovanie-v-windows/' target='_blank'>Guide</a>."></li>
+                                <li data-ru="Повторите запуск." data-en="Retry launch."></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="error-card" data-error="2">
+                        <div class="error-header" onclick="toggleError(this)"><span class="error-number">#2</span><span class="error-title" data-ru="ESP отключается спустя время" data-en="ESP turns off after a while"></span><span class="error-arrow">▶</span></div>
+                        <div class="error-body">
+                            <div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div>
+                            <ul class="solution-list">
+                                <li data-ru="Закройте игру." data-en="Close the game."></li>
+                                <li data-ru="Отключите <strong>файл подкачки</strong>: <a href='https://windows10x.ru/kak-otklyuchit-fajl-podkachki-windows-10/' target='_blank'>Инструкция</a>." data-en="Disable the <strong>page file</strong>: <a href='https://windows10x.ru/kak-otklyuchit-fajl-podkachki-windows-10/' target='_blank'>Guide</a>."></li>
+                                <li data-ru="Перезагрузите ПК." data-en="Restart PC."></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="error-card" data-error="14">
+                        <div class="error-header" onclick="toggleError(this)"><span class="error-number">#14</span><span class="error-title" data-ru="ESP плавает / дёргается" data-en="ESP floats / jitters"></span><span class="error-arrow">▶</span></div>
+                        <div class="error-body">
+                            <div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div>
+                            <ul class="solution-list">
+                                <li data-ru="Отключите <strong>«Игровой режим»</strong> и <strong>«Планирование GPU с аппаратным ускорением»</strong>." data-en="Disable <strong>'Game Mode'</strong> and <strong>'Hardware-accelerated GPU scheduling'</strong>."></li>
+                                <li data-ru="Включите <strong>VSync</strong> в настройках игры." data-en="Enable <strong>VSync</strong> in game settings."></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===================== ERRORS: CONNECTION ===================== -->
+                <div class="section" id="page-errors-connection">
+                    <div class="page-header">
+                        <h1 data-ru="Проблемы <span class='accent'>соединения</span>" data-en="Connection <span class='accent'>Issues</span>"></h1>
+                        <p class="subtitle" data-ru="Ошибки подключения к серверу и сети." data-en="Server and network connection errors."></p>
+                    </div>
+
+                    <div class="error-card" data-error="4">
+                        <div class="error-header" onclick="toggleError(this)"><span class="error-number">#4</span><span class="error-title" data-ru="Не удалось подключиться к серверу" data-en="Failed to connect to server"></span><span class="error-arrow">▶</span></div>
+                        <div class="error-body">
+                            <a class="screenshot-link" href="https://imgur.com/5IOZQoD" target="_blank">📷 <span data-ru="Скриншот" data-en="Screenshot"></span></a>
+                            <div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div>
+                            <ul class="solution-list">
+                                <li data-ru="Синхронизируйте время: <strong>Параметры → Дата и время</strong> → переключите авто-определение." data-en="Sync time: <strong>Settings → Date & Time</strong> → toggle auto-detection."></li>
+                                <li data-ru="Перезагрузите роутер." data-en="Restart router."></li>
+                                <li data-ru="Если не помогло — VPN (Россия). <strong>НЕ отключайте</strong> VPN во время игры." data-en="If it doesn't help — VPN (Russia). <strong>DO NOT</strong> disconnect VPN during gameplay."></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="error-card" data-error="15">
+                        <div class="error-header" onclick="toggleError(this)"><span class="error-number">#15</span><span class="error-title">Failed to read connection</span><span class="error-arrow">▶</span></div>
+                        <div class="error-body">
+                            <div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div>
+                            <ul class="solution-list">
+                                <li data-ru="Провайдер заблокировал IP. <strong>Динамический IP</strong> — перезагрузите роутер." data-en="ISP blocked IP. <strong>Dynamic IP</strong> — restart router."></li>
+                                <li data-ru="<strong>Статический IP</strong> — VPN для запуска лоадера. После инжекта VPN можно отключить." data-en="<strong>Static IP</strong> — VPN for the loader. After injection, VPN can be disconnected."></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="error-card" data-error="19">
+                        <div class="error-header" onclick="toggleError(this)"><span class="error-number">#19</span><span class="error-title">Connection receive error</span><span class="error-arrow">▶</span></div>
+                        <div class="error-body">
+                            <div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div>
+                            <ul class="solution-list">
+                                <li data-ru="Свяжитесь с поддержкой: <a href='https://t.me/EclipseHacks_bot' target='_blank'>@EclipseHacks_bot</a>." data-en="Contact support: <a href='https://t.me/EclipseHacks_bot' target='_blank'>@EclipseHacks_bot</a>."></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="error-card" data-error="21">
+                        <div class="error-header" onclick="toggleError(this)"><span class="error-number">#21</span><span class="error-title">Too many requests</span><span class="error-arrow">▶</span></div>
+                        <div class="error-body">
+                            <div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div>
+                            <ul class="solution-list">
+                                <li data-ru="Перезагрузите роутер и повторите скачивание." data-en="Restart router and retry download."></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="error-card" data-error="31">
+                        <div class="error-header" onclick="toggleError(this)"><span class="error-number">#31</span><span class="error-title" data-ru="Соединение неожиданно закрылось" data-en="Connection unexpectedly closed"></span><span class="error-arrow">▶</span></div>
+                        <div class="error-body">
+                            <div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div>
+                            <ul class="solution-list">
+                                <li data-ru="Установите VPN → Россия / СНГ → повторите инжект с VPN." data-en="Install VPN → Russia / CIS → retry injection with VPN."></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===================== ERRORS: DRIVER ===================== -->
+                <div class="section" id="page-errors-driver">
+                    <div class="page-header">
+                        <h1 data-ru="Ошибки <span class='accent'>драйвера</span>" data-en="<span class='accent'>Driver</span> Errors"></h1>
+                        <p class="subtitle" data-ru="Ошибки при загрузке и инициализации драйвера." data-en="Errors during driver loading and initialization."></p>
+                    </div>
+
+                    <div class="error-card" data-error="6"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#6</span><span class="error-title">Failed to load a driver</span><span class="error-arrow">▶</span></div><div class="error-body"><a class="screenshot-link" href="https://imgur.com/DaMjtjz" target="_blank">📷 <span data-ru="Скриншот" data-en="Screenshot"></span></a><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Удалите Faceit, Riot Vanguard." data-en="Uninstall Faceit, Riot Vanguard."></li><li data-ru="Очистите папку <strong>Temp</strong>, корзину, перезагрузите ПК." data-en="Clear <strong>Temp</strong> folder, recycle bin, restart PC."></li></ul></div></div>
+
+                    <div class="error-card" data-error="12"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#12</span><span class="error-title">The system is under HVCI</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Отключите <strong>«Изоляция ядра»</strong>: <a href='https://clck.ru/347Fmi' target='_blank'>Текст</a> | <a href='https://youtu.be/I9C8P_-lTn4' target='_blank'>Видео</a>." data-en="Disable <strong>'Core Isolation'</strong>: <a href='https://clck.ru/347Fmi' target='_blank'>Text</a> | <a href='https://youtu.be/I9C8P_-lTn4' target='_blank'>Video</a>."></li></ul></div></div>
+
+                    <div class="error-card" data-error="16"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#16</span><span class="error-title">Failed to init krnl ctx</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Удалите антивирусы и анти-читы через <a href='https://www.softportal.com/software-6084-revo-uninstaller.html' target='_blank'>Revo Uninstaller</a>. Перезагрузите ПК." data-en="Uninstall antivirus and anti-cheats via <a href='https://www.softportal.com/software-6084-revo-uninstaller.html' target='_blank'>Revo Uninstaller</a>. Restart PC."></li></ul></div></div>
+
+                    <div class="error-card" data-error="23"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#23</span><span class="error-title">Failed to load driver (C000263, 0)</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Устаревшая сборка Windows. Обновите или переустановите Windows." data-en="Outdated Windows build. Update or reinstall Windows."></li></ul></div></div>
+
+                    <div class="error-card" data-error="32"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#32</span><span class="error-title">Failed find register key (12)</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Отключите <strong>«Изоляция ядра»</strong>: <a href='https://remontka.pro/disable-core-isolation-windows/' target='_blank'>Текст</a> | <a href='https://youtu.be/I9C8P_-lTn4' target='_blank'>Видео</a>." data-en="Disable <strong>'Core Isolation'</strong>: <a href='https://remontka.pro/disable-core-isolation-windows/' target='_blank'>Text</a> | <a href='https://youtu.be/I9C8P_-lTn4' target='_blank'>Video</a>."></li></ul></div></div>
+                </div>
+
+                <!-- ===================== ERRORS: INJECTION ===================== -->
+                <div class="section" id="page-errors-injection">
+                    <div class="page-header">
+                        <h1 data-ru="Ошибки <span class='accent'>инжекта</span>" data-en="<span class='accent'>Injection</span> Errors"></h1>
+                        <p class="subtitle" data-ru="Ошибки при инжекте чита в игру." data-en="Errors during cheat injection."></p>
+                    </div>
+
+                    <div class="error-card" data-error="3"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#3</span><span class="error-title" data-ru="Не открывается меню чита" data-en="Cheat menu doesn't open"></span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Перезагрузите ПК, отключите защиту Windows." data-en="Restart PC, disable Windows protection."></li><li data-ru="Установите <strong>«Оконный»</strong> режим в игре." data-en="Set <strong>'Windowed'</strong> mode in game."></li><li data-ru="Скачайте свежий лоадер, синхронизируйте время, перезагрузите роутер." data-en="Download fresh loader, sync time, restart router."></li></ul></div></div>
+
+                    <div class="error-card" data-error="7"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#7</span><span class="error-title">Failed to get ready Signal</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Перезагрузите ПК. После закрытия лоадера <strong>СРАЗУ</strong> запустите игру. Нажмите <kbd>Home</kbd>." data-en="Restart PC. After loader closes, <strong>IMMEDIATELY</strong> launch game. Press <kbd>Home</kbd>."></li></ul></div></div>
+
+                    <div class="error-card" data-error="8"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#8</span><span class="error-title">Injection error</span><span class="error-arrow">▶</span></div><div class="error-body"><a class="screenshot-link" href="https://imgur.com/fKG0GC8" target="_blank">📷 <span data-ru="Скриншот" data-en="Screenshot"></span></a><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Удалите Faceit, Riot Vanguard, антивирус, очистите Temp." data-en="Uninstall Faceit, Riot Vanguard, antivirus, clear Temp."></li><li data-ru="Если не помогло — VPN (Россия). <strong>НЕ</strong> отключайте после инжекта." data-en="If no help — VPN (Russia). <strong>DON'T</strong> disconnect after injection."></li><li data-ru="Win 10 22H2 — откатите обновления." data-en="Win 10 22H2 — roll back updates."></li></ul></div></div>
+
+                    <div class="error-card" data-error="10"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#10</span><span class="error-title">Anticheat running</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Перезагрузите ПК. Запуск <strong>ДО</strong> игры, не во время!" data-en="Restart PC. Launch <strong>BEFORE</strong> the game, not during!"></li></ul></div></div>
+
+                    <div class="error-card" data-error="35"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#35</span><span class="error-title">Failed to clear trace (1)</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Перезагрузите ПК, удалите антивирус и античиты, отключите Защитник." data-en="Restart PC, uninstall antivirus and anti-cheats, disable Defender."></li></ul></div></div>
+
+                    <div class="error-card" data-error="38"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#38</span><span class="error-title">Failed to map data [1]</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Откатите последние обновления Windows: <a href='https://remontka.pro/uninstall-updates-windows-11/' target='_blank'>Инструкция</a>." data-en="Roll back latest Windows updates: <a href='https://remontka.pro/uninstall-updates-windows-11/' target='_blank'>Guide</a>."></li></ul></div></div>
+
+                    <div class="error-card" data-error="39"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#39</span><span class="error-title">Already initiated, please restart PC</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Перезагрузите ПК, отключите защитные службы, повторите запуск." data-en="Restart PC, disable security services, try again."></li></ul></div></div>
+                </div>
+
+                <!-- ===================== ERRORS: SYSTEM ===================== -->
+                <div class="section" id="page-errors-system">
+                    <div class="page-header">
+                        <h1 data-ru="Системные <span class='accent'>ошибки</span>" data-en="System <span class='accent'>Errors</span>"></h1>
+                        <p class="subtitle" data-ru="Ошибки системы, компонентов и совместимости." data-en="System, component and compatibility errors."></p>
+                    </div>
+
+                    <div class="error-card" data-error="5"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#5</span><span class="error-title">WebView2 Runtime not found</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Установите <a href='https://go.microsoft.com/fwlink/p/?LinkId=2124703' target='_blank'>WebView2 Runtime</a>. Перезагрузите ПК." data-en="Install <a href='https://go.microsoft.com/fwlink/p/?LinkId=2124703' target='_blank'>WebView2 Runtime</a>. Restart PC."></li></ul></div></div>
+
+                    <div class="error-card" data-error="9"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#9</span><span class="error-title">Failed to register service</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Ваша ОС <strong>не поддерживается</strong>. Проверьте системные требования и установите нужную версию Windows." data-en="Your OS is <strong>not supported</strong>. Check system requirements and install the required Windows version."></li></ul></div></div>
+
+                    <div class="error-card" data-error="13"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#13</span><span class="error-title">LoadLibrary error</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Установите <a href='https://aka.ms/vs/17/release/vc_redist.x64.exe' target='_blank'>Visual C++ Redistributable</a>. Перезагрузите ПК." data-en="Install <a href='https://aka.ms/vs/17/release/vc_redist.x64.exe' target='_blank'>Visual C++ Redistributable</a>. Restart PC."></li></ul></div></div>
+
+                    <div class="error-card" data-error="17"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#17</span><span class="error-title" data-ru="Точка входа не найдена D3DX" data-en="Entry point not found D3DX"></span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Установите <a href='https://download.microsoft.com/download/1/7/1/1718CCC4-6315-4D8E-9543-8E28A4E18C4C/dxwebsetup.exe' target='_blank'>DirectX</a>." data-en="Install <a href='https://download.microsoft.com/download/1/7/1/1718CCC4-6315-4D8E-9543-8E28A4E18C4C/dxwebsetup.exe' target='_blank'>DirectX</a>."></li></ul></div></div>
+
+                    <div class="error-card" data-error="24"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#24</span><span class="error-title">System initialization error</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="CMD от админа:" data-en="CMD as admin:"></li></ul><div class="code-block">net start winmgmt</div><ul class="solution-list"><li data-ru="Если не помогло — <a href='https://support.bluestacks.com/hc/ru/articles/360033276851' target='_blank'>включите WMI</a>." data-en="If no help — <a href='https://support.bluestacks.com/hc/ru/articles/360033276851' target='_blank'>enable WMI</a>."></li></ul></div></div>
+
+                    <div class="error-card" data-error="30"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#30</span><span class="error-title" data-ru="Не удалось получить импорты" data-en="Failed to get imports"></span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Установите <a href='https://aka.ms/vs/17/release/vc_redist.x64.exe' target='_blank'>Visual C++</a>. Перезагрузите ПК." data-en="Install <a href='https://aka.ms/vs/17/release/vc_redist.x64.exe' target='_blank'>Visual C++</a>. Restart PC."></li></ul></div></div>
+
+                    <div class="error-card" data-error="36"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#36</span><span class="error-title">Failed to get system data</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="CMD от админа:" data-en="CMD as admin:"></li></ul><div class="code-block">net start winmgmt</div><ul class="solution-list"><li data-ru="Если не помогло — <a href='https://support.bluestacks.com/hc/ru/articles/360033276851' target='_blank'>включите WMI</a>." data-en="If no help — <a href='https://support.bluestacks.com/hc/ru/articles/360033276851' target='_blank'>enable WMI</a>."></li></ul></div></div>
+
+                    <div class="error-card" data-error="41"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#41</span><span class="error-title" data-ru="Не удалось создать каталог данных" data-en="Failed to create data directory"></span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Обновите Windows." data-en="Update Windows."></li><li data-ru="Переустановите <strong>Edge WebView2</strong>: удалите через Панель управления, затем <a href='https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/1b33f4e1-227e-4265-b9e9-3751aeeb2efe/MicrosoftEdgeWebview2Setup.exe' target='_blank'>скачайте заново</a>." data-en="Reinstall <strong>Edge WebView2</strong>: remove via Control Panel, then <a href='https://msedge.sf.dl.delivery.mp.microsoft.com/filestreamingservice/files/1b33f4e1-227e-4265-b9e9-3751aeeb2efe/MicrosoftEdgeWebview2Setup.exe' target='_blank'>download again</a>."></li></ul></div></div>
+                </div>
+
+                <!-- ===================== ERRORS: LOADER ===================== -->
+                <div class="section" id="page-errors-loader">
+                    <div class="page-header">
+                        <h1 data-ru="Ошибки <span class='accent'>лоадера</span>" data-en="<span class='accent'>Loader</span> Errors"></h1>
+                        <p class="subtitle" data-ru="Проблемы с запуском и работой лоадера." data-en="Loader startup and operation issues."></p>
+                    </div>
+
+                    <div class="error-card" data-error="11"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#11</span><span class="error-title">Initialization error</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Отключите защиту, удалите антивирус. Скачайте новый лоадер, переместите на <strong>диск C:</strong>." data-en="Disable protection, uninstall antivirus. Download new loader, move to <strong>drive C:</strong>."></li></ul></div></div>
+
+                    <div class="error-card" data-error="18"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#18</span><span class="error-title">Key not found</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Проверьте: нет пробелов / лишних символов. Скопируйте ключ из личного кабинета → ПКМ → <strong>«Вставить»</strong>." data-en="Check: no spaces / extra characters. Copy key from account → RMB → <strong>'Paste'</strong>."></li></ul></div></div>
+
+                    <div class="error-card" data-error="20"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#20</span><span class="error-title" data-ru="Вечная загрузка / ключ не активирован" data-en="Infinite loading / key not activated"></span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Синхронизируйте время, перезагрузите роутер." data-en="Sync time, restart router."></li><li data-ru="Удалите Faceit, Riot Vanguard, антивирусы." data-en="Uninstall Faceit, Riot Vanguard, antivirus."></li></ul></div></div>
+
+                    <div class="error-card" data-error="22"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#22</span><span class="error-title" data-ru="Unknown error (при скачивании)" data-en="Unknown error (downloading)"></span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Перезагрузите роутер, отключите защитник, используйте другой браузер." data-en="Restart router, disable defender, use different browser."></li></ul></div></div>
+
+                    <div class="error-card" data-error="26"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#26</span><span class="error-title" data-ru="Лоадер не запускается" data-en="Loader doesn't start"></span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Смените DNS на Cloudflare:" data-en="Change DNS to Cloudflare:"></li></ul><div class="code-block">1.1.1.1<br>1.0.0.1</div><ul class="solution-list"><li data-ru="Перезагрузите роутер и повторите." data-en="Restart router and retry."></li></ul></div></div>
+
+                    <div class="error-card" data-error="27"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#27</span><span class="error-title" data-ru="Лоадер не запускается (вариант 2)" data-en="Loader doesn't start (v2)"></span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Установите <a href='https://go.microsoft.com/fwlink/p/?LinkId=2124703' target='_blank'>WebView2</a>. Если не помогло — VPN. Иначе — поддержка." data-en="Install <a href='https://go.microsoft.com/fwlink/p/?LinkId=2124703' target='_blank'>WebView2</a>. If no help — VPN. Otherwise — support."></li></ul></div></div>
+
+                    <div class="error-card" data-error="29"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#29</span><span class="error-title" data-ru="Кнопка «Запустить» не реагирует" data-en="'Run' button unresponsive"></span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Нажимайте <kbd>Tab</kbd> до активации кнопки. Попробуйте отключить второй монитор." data-en="Press <kbd>Tab</kbd> until button activates. Try disconnecting second monitor."></li></ul></div></div>
+
+                    <div class="error-card" data-error="33"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#33</span><span class="error-title" data-ru="Не удалось скачать модуль" data-en="Failed to download module"></span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Перезагрузите ПК и роутер." data-en="Restart PC and router."></li></ul></div></div>
+
+                    <div class="error-card" data-error="34"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#34</span><span class="error-title">Fatal error</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Установите <a href='https://go.microsoft.com/fwlink/p/?LinkId=2124703' target='_blank'>WebView2</a>." data-en="Install <a href='https://go.microsoft.com/fwlink/p/?LinkId=2124703' target='_blank'>WebView2</a>."></li></ul></div></div>
+
+                    <div class="error-card" data-error="48"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#48</span><span class="error-title">0x00005. Error initialization</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Перезагрузите ПК, запустите <strong>от имени администратора</strong>." data-en="Restart PC, run <strong>as administrator</strong>."></li></ul></div></div>
+
+                    <div class="error-card" data-error="49"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#49</span><span class="error-title">0x00006/7. Error getting specific data</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Перезагрузите ПК, отключите защиту, удалите антивирус/античиты, скачайте лоадер заново." data-en="Restart PC, disable protection, uninstall antivirus/anti-cheats, re-download loader."></li></ul></div></div>
+
+                    <div class="error-card" data-error="50"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#50</span><span class="error-title">0x00008. Error getting driver data</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Перезагрузите ПК, запустите <strong>от имени администратора</strong>." data-en="Restart PC, run <strong>as administrator</strong>."></li></ul></div></div>
+                </div>
+
+                <!-- ===================== ERRORS: OTHER ===================== -->
+                <div class="section" id="page-errors-other">
+                    <div class="page-header">
+                        <h1 data-ru="Прочие <span class='accent'>ошибки</span>" data-en="Other <span class='accent'>Errors</span>"></h1>
+                        <p class="subtitle" data-ru="Остальные ошибки и нестандартные ситуации." data-en="Other errors and non-standard situations."></p>
+                    </div>
+
+                    <div class="error-card" data-error="25"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#25</span><span class="error-title" data-ru="Windows Command Processor не работает" data-en="Windows Command Processor not working"></span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Синхронизируйте время, перезагрузите роутер и ПК." data-en="Sync time, restart router and PC."></li></ul></div></div>
+
+                    <div class="error-card" data-error="28"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#28</span><span class="error-title" data-ru="Неизвестная ошибка" data-en="Unknown error"></span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Удалите антивирус и античиты. Используйте <a href='https://www.softportal.com/software-43861-defender-control.html' target='_blank'>Defender Control</a> для отключения Защитника." data-en="Uninstall antivirus and anti-cheats. Use <a href='https://www.softportal.com/software-43861-defender-control.html' target='_blank'>Defender Control</a> to disable Defender."></li></ul></div></div>
+
+                    <div class="error-card" data-error="37"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#37</span><span class="error-title" data-ru="Неизвестная ошибка (вариант 2)" data-en="Unknown error (v2)"></span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="CMD от админа:" data-en="CMD as admin:"></li></ul><div class="code-block">sfc /scannow<br>dism /Online /Cleanup-Image /RestoreHealth</div></div></div>
+
+                    <div class="error-card" data-error="40"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#40</span><span class="error-title" data-ru="Не удалось получить системные данные" data-en="Failed to get system data"></span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Перезагрузите ПК и модем, отключите защитник, удалите антивирус." data-en="Restart PC and modem, disable defender, uninstall antivirus."></li><li data-ru="Если используете HWID Spoofer — запустите сначала чит, потом спуфер." data-en="If using HWID Spoofer — launch cheat first, then spoofer."></li></ul></div></div>
+
+                    <div class="error-card" data-error="51"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#51</span><span class="error-title">Error 0x00009. Post-initialization</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Обратитесь в поддержку, передайте файл <strong>ntoskrnl.exe</strong>." data-en="Contact support, provide <strong>ntoskrnl.exe</strong> file."></li></ul></div></div>
+
+                    <div class="error-card" data-error="52"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#52</span><span class="error-title">Error 0x0000A. Pattern not found</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Обратитесь в поддержку, передайте файл <strong>ntoskrnl.exe</strong>." data-en="Contact support, provide <strong>ntoskrnl.exe</strong> file."></li></ul></div></div>
+
+                    <div class="error-card" data-error="53"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#53</span><span class="error-title">Unhandled exception</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Запуск от админа. CMD:" data-en="Run as admin. CMD:"></li></ul><div class="code-block">sfc /scannow</div><ul class="solution-list"><li data-ru="Если ошибки — переустановите Windows. Если нет — откатите обновления." data-en="If errors — reinstall Windows. If none — roll back updates."></li><li data-ru="Проверьте ОЗУ, синхронизируйте время." data-en="Check RAM, sync time."></li></ul></div></div>
+
+                    <div class="error-card" data-error="54"><div class="error-header" onclick="toggleError(this)"><span class="error-number">#54</span><span class="error-title">Load drive error</span><span class="error-arrow">▶</span></div><div class="error-body"><div class="solution-badge" data-ru="✓ Решение" data-en="✓ Solution"></div><ul class="solution-list"><li data-ru="Перезагрузите ПК, отключите Защитник, удалите антивирус и античиты." data-en="Restart PC, disable Defender, uninstall antivirus and anti-cheats."></li><li data-ru="Windows 11 — отключите VBS в реестре и BIOS." data-en="Windows 11 — disable VBS in registry and BIOS."></li></ul></div></div>
+                </div>
+
+                <!-- ===================== SUPPORT ===================== -->
+                <div class="section" id="page-support">
+                    <div class="page-header">
+                        <h1 data-ru="Поддержка <span class='accent'>24/7</span>" data-en="Support <span class='accent'>24/7</span>"></h1>
+                        <p class="subtitle" data-ru="Если ошибки нет в мануале или решение не помогло." data-en="If your error is not listed or the solution didn't help."></p>
+                    </div>
+
+                    <div class="alert alert-orange">
+                        <span class="alert-icon">💬</span>
+                        <div data-ru="Telegram поддержка: <a href='https://t.me/EclipseHacks_bot' target='_blank'><strong>@EclipseHacks_bot</strong></a>" data-en="Telegram support: <a href='https://t.me/EclipseHacks_bot' target='_blank'><strong>@EclipseHacks_bot</strong></a>"></div>
+                    </div>
+
+                    <h2 data-ru="Перед обращением" data-en="Before contacting"></h2>
+
+                    <div class="steps">
+                        <div class="step" data-ru="Убедитесь, что выполнили <strong>все пункты</strong> из раздела «Подготовка ПК»." data-en="Make sure you completed <strong>all steps</strong> from 'PC Preparation'."></div>
+                        <div class="step" data-ru="Проверьте раздел <strong>«Устранение ошибок»</strong> — возможно, решение уже описано." data-en="Check <strong>'Troubleshooting'</strong> — the solution may already be described."></div>
+                        <div class="step" data-ru="Подготовьте <strong>скриншот ошибки</strong> и версию Windows." data-en="Prepare an <strong>error screenshot</strong> and Windows version."></div>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <div class="features-grid">
+                        <div class="feature-card" onclick="window.open('https://t.me/EclipseHacks_bot','_blank')">
+                            <div class="feature-icon">💬</div>
+                            <div class="feature-title">Telegram Bot</div>
+                            <div class="feature-desc" data-ru="Поддержка" data-en="Support"></div>
+                        </div>
+                        <div class="feature-card" onclick="window.open('https://eclipse-cheats.ru','_blank')">
+                            <div class="feature-icon">🌐</div>
+                            <div class="feature-title" data-ru="Сайт" data-en="Website"></div>
+                            <div class="feature-desc">eclipse-cheats.ru</div>
+                        </div>
+                        <div class="feature-card" onclick="window.open('https://eclipse-cheats.ru/catalog','_blank')">
+                            <div class="feature-icon">🛒</div>
+                            <div class="feature-title" data-ru="Каталог" data-en="Catalog"></div>
+                            <div class="feature-desc" data-ru="Все продукты" data-en="All products"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <button class="mobile-toggle" onclick="toggleSidebar()">☰</button>
+
+    <script>
+        let currentLang = 'ru';
+
+        function setLang(lang) {
+            currentLang = lang;
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+            document.querySelectorAll('[data-ru]').forEach(el => {
+                const t = el.getAttribute(`data-${lang}`);
+                if (t) el.innerHTML = t;
+            });
+            const si = document.getElementById('searchInput');
+            si.placeholder = si.getAttribute(`data-placeholder-${lang}`);
+        }
+
+        function showPage(page) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById('page-' + page).classList.add('active');
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            const navEl = document.querySelector(`.nav-link[data-page="${page}"]`);
+            if (navEl) navEl.classList.add('active');
+            const activeSpan = navEl ? navEl.querySelector('span:last-child') : null;
+            if (activeSpan) {
+                const bc = document.getElementById('breadcrumb-current');
+                bc.setAttribute('data-ru', activeSpan.getAttribute('data-ru') || activeSpan.textContent);
+                bc.setAttribute('data-en', activeSpan.getAttribute('data-en') || activeSpan.textContent);
+                bc.innerHTML = activeSpan.getAttribute(`data-${currentLang}`) || activeSpan.textContent;
+            }
+            window.scrollTo(0, 0);
+            document.getElementById('sidebar').classList.remove('open');
+            document.getElementById('sidebarOverlay').classList.remove('open');
+        }
+
+        function toggleError(header) {
+            header.closest('.error-card').classList.toggle('open');
+        }
+
+        function handleSearch(q) {
+            q = q.toLowerCase().trim();
+            document.querySelectorAll('.error-card').forEach(card => {
+                if (!q) { card.classList.remove('search-hidden'); return; }
+                const t = card.querySelector('.error-title').textContent.toLowerCase();
+                const b = card.querySelector('.error-body') ? card.querySelector('.error-body').textContent.toLowerCase() : '';
+                const n = card.getAttribute('data-error');
+                if (t.includes(q) || b.includes(q) || n === q || '#'+n === q) {
+                    card.classList.remove('search-hidden');
+                    card.classList.add('open');
+                } else {
+                    card.classList.add('search-hidden');
+                }
+            });
+        }
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('open');
+            document.getElementById('sidebarOverlay').classList.toggle('open');
+        }
+
+        setLang('ru');
+    </script>
+</body>
+</html>
