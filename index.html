@@ -738,8 +738,24 @@
             </div>
 
             <nav class="sidebar-nav">
+                    <div class="nav-section">
+                    <div class="nav-section-title" data-ru="Продукты" data-en="Products">Продукты</div>
+                    <a class="nav-link" onclick="showPage('rust-full')" data-page="rust-full">
+                        <span class="nav-icon">🛡️</span>
+                        <span data-ru="Eclipse Rust Full" data-en="Eclipse Rust Full">Eclipse Rust Full</span>
+                    </a>
+                    <a class="nav-link" onclick="showPage('rust-lite')" data-page="rust-lite">
+                        <span class="nav-icon">🧊</span>
+                        <span data-ru="Eclipse Rust Lite" data-en="Eclipse Rust Lite">Eclipse Rust Lite</span>
+                    </a>
+                    <a class="nav-link" onclick="showPage('arc-full')" data-page="arc-full">
+                        <span class="nav-icon">🤖</span>
+                        <span data-ru="Eclipse ARC Full" data-en="Eclipse ARC Full">Eclipse ARC Full</span>
+                    </a>
+                </div>
+
                 <div class="nav-section">
-                    <div class="nav-section-title" data-ru="Начало работы" data-en="Getting Started">Начало работы</div>
+                    <div class="nav-section-title" data-ru="Инструкции" data-en="Guides">Инструкции</div>
                     <a class="nav-link active" onclick="showPage('welcome')" data-page="welcome">
                         <span class="nav-icon">📖</span>
                         <span data-ru="Введение" data-en="Introduction">Введение</span>
@@ -747,10 +763,6 @@
                     <a class="nav-link" onclick="showPage('preparation')" data-page="preparation">
                         <span class="nav-icon">⚙️</span>
                         <span data-ru="Подготовка ПК" data-en="PC Preparation">Подготовка ПК</span>
-                    </a>
-                    <a class="nav-link" onclick="showPage('launch')" data-page="launch">
-                        <span class="nav-icon">🚀</span>
-                        <span data-ru="Запуск чита" data-en="Launch Guide">Запуск чита</span>
                     </a>
                 </div>
 
@@ -829,15 +841,30 @@
                     </div>
 
                     <div class="features-grid">
+                        <div class="feature-card" onclick="showPage('rust-full')">
+                            <div class="feature-icon">🛡️</div>
+                            <div class="feature-title">Rust Full</div>
+                            <div class="feature-desc" data-ru="Запуск и инструкция" data-en="Launch and guide"></div>
+                        </div>
+                        <div class="feature-card" onclick="showPage('rust-lite')">
+                            <div class="feature-icon">🧊</div>
+                            <div class="feature-title">Rust Lite</div>
+                            <div class="feature-desc" data-ru="Запуск и инструкция" data-en="Launch and guide"></div>
+                        </div>
+                        <div class="feature-card" onclick="showPage('arc-full')">
+                            <div class="feature-icon">🤖</div>
+                            <div class="feature-title">ARC Full</div>
+                            <div class="feature-desc" data-ru="Запуск и инструкция" data-en="Launch and guide"></div>
+                        </div>
+                    </div>
+
+                    <div class="section-divider"></div>
+
+                    <div class="features-grid">
                         <div class="feature-card" onclick="showPage('preparation')">
                             <div class="feature-icon">⚙️</div>
                             <div class="feature-title" data-ru="Подготовка ПК" data-en="PC Preparation"></div>
                             <div class="feature-desc" data-ru="Настройка системы перед запуском" data-en="System setup before launch"></div>
-                        </div>
-                        <div class="feature-card" onclick="showPage('launch')">
-                            <div class="feature-icon">🚀</div>
-                            <div class="feature-title" data-ru="Запуск чита" data-en="Launch Guide"></div>
-                            <div class="feature-desc" data-ru="Пошаговая инструкция" data-en="Step-by-step instructions"></div>
                         </div>
                         <div class="feature-card" onclick="showPage('errors-system')">
                             <div class="feature-icon">🛠️</div>
@@ -889,11 +916,11 @@
                     </div>
                 </div>
 
-                <!-- ===================== LAUNCH ===================== -->
-                <div class="section" id="page-launch">
+                <!-- ===================== RUST FULL ===================== -->
+                <div class="section" id="page-rust-full">
                     <div class="page-header">
-                        <h1 data-ru="Запуск <span class='accent'>чита</span>" data-en="<span class='accent'>Launch</span> Guide"></h1>
-                        <p class="subtitle" data-ru="Пошаговая инструкция по запуску." data-en="Step-by-step launch instructions."></p>
+                        <h1>Eclipse <span class='accent'>Rust Full</span></h1>
+                        <p class="subtitle" data-ru="Инструкция по запуску Rust Full версии." data-en="Launch guide for Rust Full version."></p>
                     </div>
 
                     <div class="alert alert-warning">
@@ -905,7 +932,7 @@
 
                     <div class="steps">
                         <div class="step" data-ru="Запустите игру, в настройках установите режим окна <strong>«Полноэкранный в окне»</strong>, затем <strong>закройте</strong> игру." data-en="Launch the game, set window mode to <strong>'Fullscreen Windowed'</strong> in settings, then <strong>close</strong> the game."></div>
-                        <div class="step" data-ru="Скачайте лоадер: <a href='https://eclipse.syringe.dev/download' target='_blank'>syringe.dev/download</a>, используя свой ключ." data-en="Download the loader: <a href='https://eclipse.syringe.dev/download' target='_blank'>syringe.dev/download</a>, using your key."></div>
+                        <div class="step" data-ru="Скачайте лоадер: <a href='http://eclipse.orion-security.su/launcher' target='_blank'>orion-security.su/launcher</a>, используя свой ключ." data-en="Download the loader: <a href='http://eclipse.orion-security.su/launcher' target='_blank'>orion-security.su/launcher</a>, using your key."></div>
                         <div class="step" data-ru="Запустите файл <strong>от имени администратора</strong>. Выберите игру из списка и нажмите <strong>«Запустить»</strong>." data-en="Run the file <strong>as administrator</strong>. Select your game and click <strong>'Run'</strong>."></div>
                         <div class="step" data-ru="Дождитесь закрытия лоадера. При успешном инжекте — сообщение с <strong>✅ галочкой</strong>. Появится окно перезагрузки — нажмите <strong>«Да»</strong>." data-en="Wait for the loader to close. On success — a <strong>✅ checkmark</strong> message. A reboot prompt appears — click <strong>'Yes'</strong>."></div>
                         <div class="step" data-ru="После перезагрузки: снова запустите лоадер от имени администратора → выберите игру → <strong>«Запустить»</strong>." data-en="After restart: launch the loader again as admin → select game → <strong>'Run'</strong>."></div>
@@ -913,7 +940,55 @@
                         <div class="step" data-ru="Нажмите <kbd>Insert</kbd> или <kbd>Home</kbd> для вызова меню чита." data-en="Press <kbd>Insert</kbd> or <kbd>Home</kbd> to open the cheat menu."></div>
                     </div>
 
-                    <h3 data-ru="ARC Raiders — временно измененный запуск" data-en="ARC Raiders — temporary launch flow"></h3>
+                    <div class="alert alert-danger">
+                        <span class="alert-icon">🔴</span>
+                        <div data-ru="<strong>Rust:</strong> после инжекта извлеките USB и удалите лоадер с ПК. Лоадер должен быть ТОЛЬКО на USB!" data-en="<strong>Rust:</strong> after injection, remove USB and delete loader from PC. Loader should ONLY be on USB!"></div>
+                    </div>
+                </div>
+
+                <!-- ===================== RUST LITE ===================== -->
+                <div class="section" id="page-rust-lite">
+                    <div class="page-header">
+                        <h1>Eclipse <span class='accent'>Rust Lite</span></h1>
+                        <p class="subtitle" data-ru="Инструкция по запуску Rust Lite версии." data-en="Launch guide for Rust Lite version."></p>
+                    </div>
+
+                    <div class="alert alert-warning">
+                        <span class="alert-icon">⚠️</span>
+                        <div data-ru="Убедитесь, что Вы выполнили все пункты из раздела <strong>Подготовка ПК</strong>." data-en="Make sure you completed all steps from <strong>PC Preparation</strong>."></div>
+                    </div>
+
+                    <h2 data-ru="Инструкция по запуску" data-en="Launch Instructions"></h2>
+
+                    <div class="steps">
+                        <div class="step" data-ru="Запустите игру, в настройках установите режим окна <strong>«Полноэкранный в окне»</strong>, затем <strong>закройте</strong> игру." data-en="Launch the game, set window mode to <strong>'Fullscreen Windowed'</strong> in settings, then <strong>close</strong> the game."></div>
+                        <div class="step" data-ru="Скачайте лоадер: <a href='http://eclipse.orion-security.su/launcher' target='_blank'>orion-security.su/launcher</a>, используя свой ключ." data-en="Download the loader: <a href='http://eclipse.orion-security.su/launcher' target='_blank'>orion-security.su/launcher</a>, using your key."></div>
+                        <div class="step" data-ru="Запустите файл <strong>от имени администратора</strong>. Выберите игру из списка и нажмите <strong>«Запустить»</strong>." data-en="Run the file <strong>as administrator</strong>. Select your game and click <strong>'Run'</strong>."></div>
+                        <div class="step" data-ru="Дождитесь закрытия лоадера. При успешном инжекте — сообщение с <strong>✅ галочкой</strong>. Появится окно перезагрузки — нажмите <strong>«Да»</strong>." data-en="Wait for the loader to close. On success — a <strong>✅ checkmark</strong> message. A reboot prompt appears — click <strong>'Yes'</strong>."></div>
+                        <div class="step" data-ru="После перезагрузки: снова запустите лоадер от имени администратора → выберите игру → <strong>«Запустить»</strong>." data-en="After restart: launch the loader again as admin → select game → <strong>'Run'</strong>."></div>
+                        <div class="step" data-ru="<strong>СРАЗУ</strong> запустите игру. Дождитесь полной загрузки до главного меню." data-en="<strong>IMMEDIATELY</strong> launch the game. Wait for full load to main menu."></div>
+                        <div class="step" data-ru="Нажмите <kbd>Insert</kbd> или <kbd>Home</kbd> для вызова меню чита." data-en="Press <kbd>Insert</kbd> or <kbd>Home</kbd> to open the cheat menu."></div>
+                    </div>
+
+                    <div class="alert alert-danger">
+                        <span class="alert-icon">🔴</span>
+                        <div data-ru="<strong>Rust:</strong> после инжекта извлеките USB и удалите лоадер с ПК. Лоадер должен быть ТОЛЬКО на USB!" data-en="<strong>Rust:</strong> after injection, remove USB and delete loader from PC. Loader should ONLY be on USB!"></div>
+                    </div>
+                </div>
+
+                <!-- ===================== ARC FULL ===================== -->
+                <div class="section" id="page-arc-full">
+                    <div class="page-header">
+                        <h1>Eclipse <span class='accent'>ARC Full</span></h1>
+                        <p class="subtitle" data-ru="Инструкция по запуску ARC Full версии." data-en="Launch guide for ARC Full version."></p>
+                    </div>
+
+                    <div class="alert alert-warning">
+                        <span class="alert-icon">⚠️</span>
+                        <div data-ru="Убедитесь, что Вы выполнили все пункты из раздела <strong>Подготовка ПК</strong>." data-en="Make sure you completed all steps from <strong>PC Preparation</strong>."></div>
+                    </div>
+
+                    <h2 data-ru="Инструкция по запуску" data-en="Launch Instructions"></h2>
 
                     <div class="alert alert-orange">
                         <span class="alert-icon">💡</span>
@@ -925,11 +1000,6 @@
                         <div class="step" data-ru="<strong>2.</strong> Перезагрузите ПК." data-en="<strong>2.</strong> Reboot your PC."></div>
                         <div class="step" data-ru="<strong>3.</strong> Запустите игру <strong>ARC Raiders</strong>." data-en="<strong>3.</strong> Launch <strong>ARC Raiders</strong>."></div>
                         <div class="step" data-ru="<strong>4.</strong> Уже в игре снова откройте лоадер чита и нажмите <strong>Load</strong>." data-en="<strong>4.</strong> While in-game, open the cheat loader again and press <strong>Load</strong>."></div>
-                    </div>
-
-                    <div class="alert alert-danger">
-                        <span class="alert-icon">🔴</span>
-                        <div data-ru="<strong>Rust:</strong> после инжекта извлеките USB и удалите лоадер с ПК. Лоадер должен быть ТОЛЬКО на USB!" data-en="<strong>Rust:</strong> after injection, remove USB and delete loader from PC. Loader should ONLY be on USB!"></div>
                     </div>
 
                     <div class="alert alert-success">
